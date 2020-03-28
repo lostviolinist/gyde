@@ -3,55 +3,38 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Toolbar from './components/Toolbar/Toolbar'
 import Footer from './components/Footer/Footer'
-import profile from './niki.jpg';
+import Profile from './components/Profile/Profile'
+import ProfileForm from './components/Profile/ProfileForm';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App container border ">
-        <Toolbar />
-        <div style={{marginTop:'200px', marginLeft:'35px'}} className="main">
-            <div>
-                  <img src={profile} alt="" className='profile_picture'/>
-            </div>
-         
-            <div>
-              <form>
-                  <br/><br/>
-                  <input type="text" id="fname" name="fname" placeholder="Name"/><br/><br/><br/>
-                  <input type="text" id="job" name="job" placeholder="Job"/><br/><br/>
-                  <input type="number" id="exp" name="exp" placeholder="Professional Experience"/><br/><br/>
-                  <input type="text" id="hashtag" name="hashtag" placeholder="Hastags"/><br/><br/>
-                  
-                  <input type="submit" value="Submit"/>
-              </form>
-            </div>
-            
-            
-            
-        </div>
-        
-        
-       
       
-        
-        <footer className="container border">
-      <Footer />
-    </footer>
+      <Router>
+          <header className="nav">
+              <Toolbar /> 
+          </header>
+          <div className="App container">    
 
-      </div>
-      
-      
-      
-      
+
+
+            {/* <Route path="/feed" component={Feed} exact /> */}
+            <Route path="/profile/:name" component={Profile} exact />
+            <Route path="/profile/edit" component={ProfileForm} exact />
+
+
+          </div>
+          <footer className="">
+              <Footer />
+          </footer>
+      </Router>
     );
-
   }
-  
 }
 
 export default App;

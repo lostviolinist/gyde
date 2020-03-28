@@ -4,10 +4,15 @@ import search from './search.png';
 import './Toolbar.css';
 
 const toolbar = props => (
-    <nav class="navbar top ">
-  <span class="navbar-brand mb-0 h1">gyde</span>
-  <span class="toolbar_navigation_items"><img src={search} alt=""/></span>
-</nav>
+    <header className="toolbar">
+        <nav className="toolbar_navigation">
+            <div> </div>
+            <div className="toolbar_logo">gyde.</div>
+            <div className="toolbar_navigation_items">
+                <img src={search} alt=""/>
+            </div>
+        </nav>
+    </header>
 );
 
 export default toolbar;
