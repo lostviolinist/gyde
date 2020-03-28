@@ -5,8 +5,11 @@
   "description": "Simple React frontend",
   "repository": "github:mannyhenri/react-docker",
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.8.6",
+    "react-icons": "^3.9.0",
     "react-scripts": "3.0.0"
   },
   "scripts": {
