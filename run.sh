@@ -11,6 +11,3 @@ docker-compose up -d app
 
 echo "Running client container ~"
 docker-compose up -d client
-
-
-//docker-compose build
