@@ -1,30 +1,65 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import routes from './src/routes/crmRoutes';
+
+import express from "express"
+import mongodb from "mongodb"
+import bodyParser from "body-parser"  
+import path from "path"
+import request from "request"
 
 const app = express();
+const MongoClient = mongodb.MongoClient;
 const PORT = 4000;
+const DATABASE = "gyde-db"
+const uri = "mongodb+srv://abefong54:aw5som3_dbp4$$1!@cluster0-e6ite.gcp.mongodb.net/test?retryWrites=true&w=majority";
 
-// mongoose connection
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://mongo:27017/crm', {
-    useMongoClient: true
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname,"/build")));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
 });
 
-// bodyparser setup
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const withDb = async (operations) => {
+    try {
 
-routes(app);
+        const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+        const db = client.db(DATABASE);            
+        await operations(db);
+        client.close();
+    
+    } catch (e) {
+        console.log("Error connecting to db", e);
+    } 
+}
 
-// serving static files
-app.use(express.static('public'));
+app.get("/", (req,res) => {
+    res.send("Cool");  
+})
 
-app.get('/', (req, res) =>
-    res.send(`Node and express server is running on port ${PORT}`)
-);
+app.get("/api/user/:firstName", async (req,res) => {
+    withDb( async (db) => {
+        const firstName = req.params.firstName;
+        await db.collection("user").findOne({first_name:firstName})
+            .then(response => res.status(200).json(response))
+            .catch(error => console.error(error));
+    })
+});
 
-app.listen(PORT, () =>
-    console.log(`your server is running on port ${PORT}`)
-);
+app.post("/api/user/create", async (req,res) => {
+    withDb( async (db) => {
+        const newUser = req.body;
+        await db.collection("user").insertOne(newUser)
+            .then(response => res.status(200).json(response.ops[0]))
+            .catch(error => console.error(error));
+    })
+});
+
+app.get("*", (req,res) => {
+
+    res.sendFile(path.join(__dirname+"/build/index.html"));
+
+})
+
+app.listen(PORT, () => console.info(`REST API running on port ${PORT}`));
+
+
+// npx babel-node index.js
