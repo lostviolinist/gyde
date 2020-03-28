@@ -1,4 +1,4 @@
-.toolbar{
+.top{
     width: 100%;
     position: fixed;
     top: 0;
@@ -6,19 +6,20 @@
     background:#E5FAF8;
 }
 
-.toolbar_logo{
+.navbar-brand{
     color: #516FCA;
     font-weight: bold;
     margin-left: 20px;
     font-size: 30px;
     margin-bottom: 10px;
-    margin-top: 10px;
+    
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .toolbar_navigation_items{
     float: right;
     margin-right: 30px;
+    
     /* display: inline; */
 
 }
