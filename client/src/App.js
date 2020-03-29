@@ -10,13 +10,23 @@ import ProfileForm from './components/Profile/ProfileForm';
 import Feed from './components/Feed/Feed'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Messages from './components/Messages/Messages';
+import ChatPage from './components/ChatPage/ChatPage';
+
 
 
 class App extends Component {
   render() {
+   
+    
+    
     return (
       
+      
       <Router>
+        
+        
+        
           <header className="nav">
               <Toolbar /> 
           </header>
@@ -27,6 +37,11 @@ class App extends Component {
             <Route path="/feed" component={Feed} exact />
             <Route path="/profile/:name" component={Profile} exact />
             <Route path="/profile/edit" component={ProfileForm} exact />
+            <Route path="/messages" component={Messages} exact />
+            <Route path="/chatpage" component={ChatPage} exact />
+            
+            
+            
 
 
           </div>

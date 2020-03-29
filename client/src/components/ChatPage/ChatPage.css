@@ -1,0 +1,32 @@
+.list-group-item {
+    width:100%;
+    left:0;
+    border-top: black;
+    border-left: black;
+    border-right: black;
+}
+
+.receiver {
+    text-align: right;
+    max-width:300px;
+    border: none;
+    margin-top: 20px;
+}
+
+.sender span{
+    margin: 10px;
+    color: #516FCA;
+
+}
+
+.sender {
+    text-align: left;
+    max-width:300px;
+    border: none;
+    margin-top: 20px;
+}
+
+.form-rounded {
+    margin-top: 70px;
+    border-radius: 1rem;
+    }
