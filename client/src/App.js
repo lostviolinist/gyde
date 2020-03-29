@@ -7,6 +7,7 @@ import Toolbar from './components/Toolbar/Toolbar'
 import Footer from './components/Footer/Footer'
 import Profile from './components/Profile/Profile'
 import ProfileForm from './components/Profile/ProfileForm';
+import Feed from './components/Feed/Feed'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,7 +24,7 @@ class App extends Component {
 
 
 
-            {/* <Route path="/feed" component={Feed} exact /> */}
+            <Route path="/feed" component={Feed} exact />
             <Route path="/profile/:name" component={Profile} exact />
             <Route path="/profile/edit" component={ProfileForm} exact />
 

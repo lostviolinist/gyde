@@ -1,0 +1,32 @@
+.body {
+    background:#E7EAF1;
+}
+
+.profile_pic {
+    height:55px;
+    width: 55px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.comp {
+    font-style: italic;
+}
+
+.image{
+    height:400px;
+    width: 400px;
+   
+}
+
+.hashtags {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.timestamp {
+    text-align: right;
+    font-weight: lighter;
+}
